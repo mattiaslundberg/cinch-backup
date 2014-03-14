@@ -1,0 +1,3 @@
+bin/* usr/bin/
+etc/* etc/arch-backup/
+lib/* usr/lib/arch-backup/

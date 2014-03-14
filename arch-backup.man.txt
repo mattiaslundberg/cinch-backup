@@ -1,89 +1,89 @@
 NAME
 
-    arch-backup - simple backup script
+	arch-backup - simple backup script
 
 SYNOPSIS
 
-    arch-backup [-c | [backup-config1 [backup-config2 [...]]]]
+	arch-backup [-c | [backup-config1 [backup-config2 [...]]]]
 
 DESCRIPTION
 
-    arch-backup do following:
+	arch-backup do following:
 
-    - reads main config (/etc/arch-backup/arch-backup.conf)
-    - executes backup for all configs included in command line or in BACKUP variable
-    from main config if no command line parameters given. config search directory is
-    /etc/arch-backup by default.
+	- reads main config (/etc/arch-backup/arch-backup.conf)
+	- executes backup for all configs included in command line or in BACKUP variable
+	from main config if no command line parameters given. config search directory is
+	/etc/arch-backup by default.
 
-    There are three types of backup configurations:
-    - localhost
-    - through SSH
-    - through Samba
+	There are three types of backup configurations:
+	- localhost
+	- through SSH
+	- through Samba
 
 OPTIONS
-    -c - check ~/.backup-list. Prints out missing files and directories listed in ~/.backup-list.
+	-c - check ~/.backup-list. Prints out missing files and directories listed in ~/.backup-list.
 
 LOCALHOST BACKUP
 
-    TYPE = "local" - localhost type
+	TYPE = "local" - localhost type
 
-    USERS = ("root" "user") - user list to backup. .backup-list file with file and dir list should be placed
-    in ~root/ and ~user/ directories. One path per line.
+	USERS = ("root" "user") - user list to backup. .backup-list file with file and dir list should be placed
+	in ~root/ and ~user/ directories. One path per line.
 
-    PACKAGES = "pacman" - type of package manager to backup installed packages list.
+	PACKAGES = "pacman" - type of package manager to backup installed packages list.
 
-    DIRS = ("/etc" "/opt/mydir") - list of system-wide dirs to backup.
+	DIRS = ("/etc" "/opt/mydir") - list of system-wide dirs to backup.
 
-    AFTER_BACKUP = "/bin/true" - execute this command before backup
+	AFTER_BACKUP = "/bin/true" - execute this command before backup
 
-    BEFORE_BACKUP = "/bin/true" - execute this command after backup
+	BEFORE_BACKUP = "/bin/true" - execute this command after backup
 
-    COMMANDS = ("file-name" "mysqldump dbname") - dump output of
-    mysqldump command into file-name file.
+	COMMANDS = ("file-name" "mysqldump dbname") - dump output of
+	mysqldump command into file-name file.
 
 
 SSH BACKUP
 
-    SSH config is like localhost, but have additional parameters:
+	SSH config is like localhost, but have additional parameters:
 
-    HOST="myserver" - host to connect with SSH
+	HOST="myserver" - host to connect with SSH
 
-    SSH_USER="root" - SSH username
+	SSH_USER="root" - SSH username
 
-    SSH_KEY="/path/to/private/key" - SSH key to authorize
+	SSH_KEY="/path/to/private/key" - SSH key to authorize
 
 
 SAMBA BACKUP
 
-    Samba config is like localhost, but have additional parameters:
+	Samba config is like localhost, but have additional parameters:
 
-    HOST="myserver" - host to connect with Samba
+	HOST="myserver" - host to connect with Samba
 
-    SMB_USER="root" - Samba username
+	SMB_USER="root" - Samba username
 
-    SMB_PASSWD="password" - Samba password to authorize
+	SMB_PASSWD="password" - Samba password to authorize
 
 COMMON OPTIONS
-    BACKUP_DIR="/path/to/YYYY-MM-DD/" - you may override default backup
-    directory from main config, but you need to clean up backups manualy
-    with cleardir <num> function.
+	BACKUP_DIR="/path/to/YYYY-MM-DD/" - you may override default backup
+	directory from main config, but you need to clean up backups manualy
+	with cleardir <num> function.
 
-    For example:
+	For example:
 
-    BACKUP_DIR="/path/to/`date +%Y.%m.%d.%H.%M.%S`"
+	BACKUP_DIR="/path/to/`date +%Y.%m.%d.%H.%M.%S`"
 
-    AFTER_BACKUP="cd /path/to/ && cleardir 7"
+	AFTER_BACKUP="cd /path/to/ && cleardir 7"
 
 EXAMPLES
-    Backup all:
+	Backup all:
 	arch-backup
 
-    Backup only localhost and myserver according to /etc/arch-backup/localhost and
-    /etc/arch-backup/myserver:
+	Backup only localhost and myserver according to /etc/arch-backup/localhost and
+	/etc/arch-backup/myserver:
 	arch-backup localhost myserver
 
 SEE ALSO
-    ssh(1), tar(1)
+	ssh(1), tar(1)
 
 AUTHOR
-    Sergej Pupykin <pupykins@gmail.com>
+	Sergej Pupykin <pupykins@gmail.com>
