@@ -1,4 +1,7 @@
 #!/bin/bash
+# Copyright (C) 2014 Mattias Lundberg
+# based on code by arch-backup copyright (C) 2007-2014 Sergej Pupykin
+# License: http://www.gnu.org/licenses/gpl.html GPL version 2 or higher
 
 [ "x$BACKUP_DIR" == "x" ] && BACKUP_DIR="./"
 
