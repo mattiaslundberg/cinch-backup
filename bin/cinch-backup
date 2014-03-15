@@ -89,10 +89,10 @@ else
 		echo -n "Executing \"$BEFORE_BACKUP\" before backup..."
 		eval $BEFORE_BACKUP
 		if [ $? -eq 0 ]; then
-		echo -e "${MSG_OK}"
-		$LIBEXEC_DIR/$TYPE $CONFIG_DIR/$1
+			echo -e "${MSG_OK}"
+			$LIBEXEC_DIR/$TYPE $CONFIG_DIR/$1
 		else
-		echo -e "${MSG_ERROR}"
+			echo -e "${MSG_ERROR}"
 		fi
 		echo -n "Executing \"$AFTER_BACKUP\" after backup..."
 		eval $AFTER_BACKUP && echo -e "${MSG_OK}" || echo -e "${MSG_ERROR}"
