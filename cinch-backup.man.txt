@@ -1,19 +1,19 @@
 NAME
 
-	arch-backup - simple backup script
+	cinch-backup - simple backup script
 
 SYNOPSIS
 
-	arch-backup [-c | [backup-config1 [backup-config2 [...]]]]
+	cinch-backup [-c | [backup-config1 [backup-config2 [...]]]]
 
 DESCRIPTION
 
-	arch-backup do following:
+	cinch-backup do following:
 
-	- reads main config (/etc/arch-backup/arch-backup.conf)
+	- reads main config (/etc/cinch-backup/cinch-backup.conf)
 	- executes backup for all configs included in command line or in BACKUP variable
 	from main config if no command line parameters given. config search directory is
-	/etc/arch-backup by default.
+	/etc/cinch-backup by default.
 
 	There are three types of backup configurations:
 	- localhost
@@ -76,11 +76,11 @@ COMMON OPTIONS
 
 EXAMPLES
 	Backup all:
-	arch-backup
+	cinch-backup
 
-	Backup only localhost and myserver according to /etc/arch-backup/localhost and
-	/etc/arch-backup/myserver:
-	arch-backup localhost myserver
+	Backup only localhost and myserver according to /etc/cinch-backup/localhost and
+	/etc/cinch-backup/myserver:
+	cinch-backup localhost myserver
 
 SEE ALSO
 	ssh(1), tar(1)

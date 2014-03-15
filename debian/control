@@ -1,4 +1,4 @@
-Source: arch-backup
+Source: cinch-backup
 Section: utils
 Priority: optional
 Maintainer: Mattias Lundberg <lundberg.mattias@gmail.com>
@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.3
 Homepage: http://mlundberg.se
 
-Package: arch-backup
+Package: cinch-backup
 Architecture: all
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Simple backup-script.
