@@ -9,18 +9,18 @@ cinch-backup.8:
 $(DIR).tar.gz: cinch-backup.8 \
  etc/cinch-backup.conf bin/cinch-backup \
  lib/common.inc \
- lib/local-backup etc/local-example.conf \
- lib/smb-backup etc/smb-example.conf \
- lib/ssh-backup etc/ssh-example.conf
+ lib/local etc/local-example.conf \
+ lib/smb etc/smb-example.conf \
+ lib/ssh etc/ssh-example.conf
 	mkdir $(DIR)
 	cp etc/cinch-backup.conf $(DIR)/
 	cp bin/cinch-backup $(DIR)/
 	cp lib/common.inc $(DIR)/
-	cp lib/local-backup $(DIR)/
+	cp lib/local $(DIR)/
 	cp etc/local-example.conf $(DIR)/
-	cp lib/smb-backup $(DIR)/
+	cp lib/smb $(DIR)/
 	cp etc/smb-example.conf $(DIR)/
-	cp lib/ssh-backup $(DIR)/
+	cp lib/ssh $(DIR)/
 	cp etc/ssh-example.conf $(DIR)/
 	cp cinch-backup.8 $(DIR)/
 	tar czf $(DIR).tar.gz $(DIR)/
