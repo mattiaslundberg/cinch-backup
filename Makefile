@@ -25,8 +25,9 @@ $(DIR).tar.gz: cinch-backup.8 \
 	cp cinch-backup.8 $(DIR)/
 	tar czf $(DIR).tar.gz $(DIR)/
 	rm -rf $(DIR)
-	sed -i "s|md5sums=(.*$$|md5sums=('`md5sum $(DIR).tar.gz | cut -f 1 -d \ `')|g" PKGBUILD
+	sed -i "s|sha512sums=(.*$$|sha512sums=('`sha512sum $(DIR).tar.gz | cut -f 1 -d \ `')|g" PKGBUILD
 	sed -i "s|pkgver=.*$$|pkgver=$(AVER)|g" PKGBUILD
+	sed -i "1 s|cinch-backup (.*) unstable; urgency=low$$|cinch-backup ($(AVER)) unstable; urgency=low|g" debian/changelog
 
 clean:
 	rm -f *.tar.gz *.8
