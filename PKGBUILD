@@ -14,7 +14,7 @@ backup=(etc/cinch-backup/cinch-backup.conf)
 source=(cinch-backup-$pkgver.tar.gz)
 sha512sums=('cea748491f5c7ef496f65d8a2244f98e7f7dce2589c41946a9aaf4a795fd8358eddd5ccbd939ab8805b4eee17d40bbe2fe026e6b3cc7d71c1e74db6ffdbb6bf7')
 
-build() {
+package() {
 	install -D -m 0644 $srcdir/cinch-backup-$pkgver/cinch-backup.conf \
 			$pkgdir/etc/cinch-backup/cinch-backup.conf
 	install -D -m 0755 $srcdir/cinch-backup-$pkgver/cinch-backup \
