@@ -68,8 +68,8 @@ for user in ${USERS[@]}; do
 		else
 			echo -e "${MSG_ERROR}"
 		fi
-		else
-			echo "Saving $user's home: .backup-list is absent"
+	else
+		echo "Saving $user's home: .backup-list is absent"
 	fi
 done
 
