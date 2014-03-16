@@ -22,13 +22,13 @@ source $1
 echo -n ">>> Saving package list..."
 case "$PACKAGES" in
 	pacman)
-		pacman -Q >$BACKUP_DIR/_localhost-pkg-list.txt
+		pacman -Q >$BACKUP_DIR/$HOSTNAME-pkg-list.txt
 	;;
 	rpm)
-		rpm -qa >$BACKUP_DIR/_localhost-pkg-list.txt
+		rpm -qa >$BACKUP_DIR/$HOSTNAME-pkg-list.txt
 	;;
 	dpkg)
-		dpkg -l >$BACKUP_DIR/_localhost-pkg-list.txt
+		dpkg -l >$BACKUP_DIR/$HOSTNAME-pkg-list.txt
 	;;
 	none)
 		echo "have no package manager"
@@ -62,7 +62,7 @@ for user in ${USERS[@]}; do
 		# arc
 		echo -n ">>> Saving $user's home..."
 		list=`cat $homedir/.backup-list | perl -ne "print \"'${homedir:1}/\"; chomp; print; print \"' \";"`
-		sh -c "cd / && tar c $list" | $COMPRESS_CMD 1>$BACKUP_DIR/_localhost-user-$user.tar.$COMPRESSED_EXT
+		sh -c "cd / && tar c $list" | $COMPRESS_CMD 1>$BACKUP_DIR/$HOSTNAME-user-$user.tar.$COMPRESSED_EXT
 		if [ $? -eq 0 ];then
 			echo -e "${MSG_OK}"
 		else
@@ -78,7 +78,7 @@ done
 #
 for dir in ${DIRS[@]}; do
 	echo -n ">>> Saving $dir..."
-	[ -d $dir -o -f $dir ] && cd / && tar c ${dir:1} | $COMPRESS_CMD 1>$BACKUP_DIR/_localhost-dir-`echo $dir | tr '/' '_'`.tar.$COMPRESSED_EXT
+	[ -d $dir -o -f $dir ] && cd / && tar c ${dir:1} | $COMPRESS_CMD 1>$BACKUP_DIR/$HOSTNAME-dir-`echo $dir | tr '/' '_'`.tar.$COMPRESSED_EXT
 	if [ $? -eq 0 ];then
 		echo -e "${MSG_OK}"
 	else
@@ -96,7 +96,7 @@ while [ "x${COMMANDS[$i]}" != "x" ]; do
 	CMD=${COMMANDS[$i]}
 	i=`expr $i + 1`
 	echo -n ">>> Saving command to file $FILE..."
-	sh -c "cd / && $CMD" | $COMPRESS_CMD > $BACKUP_DIR/_localhost-cmd-$FILE.$COMPRESSED_EXT
+	sh -c "cd / && $CMD" | $COMPRESS_CMD > $BACKUP_DIR/$HOSTNAME-cmd-$FILE.$COMPRESSED_EXT
 	if [ $? -eq 0 ];then
 		echo -e "${MSG_OK}"
 	else
